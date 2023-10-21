@@ -59,7 +59,6 @@ main {
         color: var(--smokey-grey);
       }
 
-      &:has(input:invalid) span:first-child,
       &:has(input.invalid) span:first-child {
         color: var(--light-red);
       }
@@ -80,7 +79,6 @@ main {
           border-color: var(--purple);
         }
 
-        &:invalid,
         &.invalid {
           border-color: var(--light-red);
         }

@@ -57,7 +57,7 @@ main {
   text-transform: uppercase;
   color: var(--smokey-grey);
 }
-#date-form div label:has(input:invalid) span:first-child, #date-form div label:has(input.invalid) span:first-child {
+#date-form div label:has(input.invalid) span:first-child {
   color: var(--light-red);
 }
 #date-form div label input {
@@ -75,7 +75,7 @@ main {
   outline: none;
   border-color: var(--purple);
 }
-#date-form div label input:invalid, #date-form div label input.invalid {
+#date-form div label input.invalid {
   border-color: var(--light-red);
 }
 #date-form div label .error {

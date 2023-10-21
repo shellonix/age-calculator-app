@@ -9,9 +9,12 @@ let intervalIds = [null, null, null];
 
 formEl.year.setAttribute('max', today.getFullYear());
 
-formEl.day.addEventListener('input', validateForm);
-formEl.month.addEventListener('input', validateForm);
-formEl.year.addEventListener('input', validateForm);
+formEl.day.addEventListener('input', validateDay);
+formEl.month.addEventListener('input', validateMonth);
+formEl.year.addEventListener('input', validateYear);
+formEl.day.addEventListener('input', validateDate);
+formEl.month.addEventListener('input', validateDate);
+formEl.year.addEventListener('input', validateDate);
 
 formEl.day.addEventListener('change', addLeadingZeroes);
 formEl.month.addEventListener('change', addLeadingZeroes);
@@ -19,7 +22,10 @@ formEl.year.addEventListener('change', addLeadingZeroes);
 
 formEl.addEventListener('submit', (e) => {
   e.preventDefault();
-  validateForm();
+  validateDay();
+  validateMonth();
+  validateYear();
+  validateDate();
 
   if (dayError.textContent || monthError.textContent || yearError.textContent) {
     return;
@@ -44,8 +50,7 @@ formEl.addEventListener('submit', (e) => {
   intervalIds[2] = animateValue(yearResult, resultDate.getFullYear());
 });
 
-function validateForm() {
-  // Validate day
+function validateDay() {
   if (formEl.day.validity.valid) {
     dayError.textContent = '';
     formEl.day.classList.remove('invalid');
@@ -58,9 +63,11 @@ function validateForm() {
     ) {
       dayError.textContent = 'Must be a valid day';
     }
+    formEl.day.classList.add('invalid');
   }
+}
 
-  // Valiate month
+function validateMonth() {
   if (formEl.month.validity.valid) {
     monthError.textContent = '';
     formEl.month.classList.remove('invalid');
@@ -73,9 +80,11 @@ function validateForm() {
     ) {
       monthError.textContent = 'Must be a valid month';
     }
+    formEl.month.classList.add('invalid');
   }
+}
 
-  // Validate year
+function validateYear() {
   if (formEl.year.validity.valid) {
     yearError.textContent = '';
     formEl.year.classList.remove('invalid');
@@ -87,8 +96,11 @@ function validateForm() {
     } else if (formEl.year.validity.rangeOverflow) {
       yearError.textContent = 'Must be in the past';
     }
+    formEl.year.classList.add('invalid');
   }
+}
 
+function validateDate() {
   // Check if date is valid (e.g. April 31th is invalid)
   if (
     formEl.day.validity.valid &&
@@ -110,6 +122,10 @@ function validateForm() {
       formEl.month.classList.add('invalid');
       formEl.year.classList.add('invalid');
       dayError.textContent = 'Must be a valid date';
+    } else {
+      formEl.day.classList.remove('invalid');
+      formEl.month.classList.remove('invalid');
+      formEl.year.classList.remove('invalid');
     }
   }
 }
