@@ -1,0 +1,200 @@
+@import url(fonts.css);
+:root {
+  --purple: hsl(259, 100%, 65%);
+  --light-red: hsl(0, 100%, 67%);
+  --white: hsl(0, 0%, 100%);
+  --off-white: hsl(0, 0%, 94%);
+  --light-grey: hsl(0, 0%, 86%);
+  --smokey-grey: hsl(0, 1%, 44%);
+  --off-black: hsl(0, 0%, 8%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 10vh 16px 16px;
+  background-color: var(--off-white);
+  font-family: "Poppins", sans-serif;
+}
+
+main {
+  max-width: 52.5rem;
+  margin: 0 auto;
+  padding: 44px 20px;
+  border-radius: 20px;
+  border-bottom-right-radius: 92px;
+  background-color: var(--white);
+}
+
+#date-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+#date-form div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+#date-form div label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 0.75rem;
+}
+#date-form div label span:first-child {
+  margin-bottom: 4px;
+  font-weight: 700;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+  color: var(--smokey-grey);
+}
+#date-form div label:has(input:invalid) span:first-child, #date-form div label:has(input.invalid) span:first-child {
+  color: var(--light-red);
+}
+#date-form div label input {
+  width: 100%;
+  padding: 12px 12px;
+  border: 1px solid var(--light-grey);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: var(--off-black);
+}
+#date-form div label input:focus {
+  outline: none;
+  border-color: var(--purple);
+}
+#date-form div label input:invalid, #date-form div label input.invalid {
+  border-color: var(--light-red);
+}
+#date-form div label .error {
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--light-red);
+}
+#date-form button {
+  --size: 64px;
+  width: var(--size);
+  height: auto;
+  aspect-ratio: 1;
+  margin-bottom: calc(var(--size) / -2);
+  padding: 0;
+  border: none;
+  border-radius: 99px;
+  background-color: var(--purple);
+  cursor: pointer;
+  transition: all ease-out 0.3s;
+}
+#date-form button:hover {
+  background-color: var(--off-black);
+}
+#date-form button img {
+  height: 24px;
+}
+
+hr {
+  margin: 0 0 52px;
+  border: none;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+#result {
+  font-size: 2.75rem;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.1;
+}
+#result div span:first-child {
+  color: var(--purple);
+}
+#result div span:last-child {
+  margin-left: 8px;
+}
+
+@media (width >= 23.25rem) {
+  #result {
+    font-size: 3.25rem;
+  }
+}
+@media (width >= 34rem) {
+  main {
+    padding: 62px 56px;
+  }
+  main #date-form div label span:first-child {
+    margin-bottom: 12px;
+  }
+  main #date-form div label input {
+    font-size: 2rem;
+  }
+  main #date-form button {
+    --size: 80px;
+  }
+  main #date-form button img {
+    height: 32px;
+  }
+  main #result {
+    font-size: 4rem;
+  }
+}
+@media (width >= 43rem) {
+  body {
+    padding-top: 5vh;
+  }
+  main #result {
+    font-size: 5rem;
+  }
+}
+@media (width >= 53rem) {
+  main {
+    padding: 64px 56px;
+  }
+  main #date-form {
+    gap: 0;
+  }
+  main #date-form div {
+    display: flex;
+    gap: 32px;
+  }
+  main #date-form div label {
+    max-width: 10rem;
+  }
+  main #date-form div label input {
+    font-size: 2rem;
+  }
+  main #date-form div label .error:not(:empty) {
+    font-size: 0.75rem;
+    margin-top: 8px;
+  }
+  main #date-form button {
+    --size: 96px;
+    align-self: flex-end;
+  }
+  main #date-form button img {
+    height: 44px;
+  }
+  main #result {
+    font-size: 5.5rem;
+  }
+}
+@media (width >= 90rem) {
+  body {
+    padding-top: max(20vh, 170px);
+  }
+  main #result {
+    font-size: 6rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
